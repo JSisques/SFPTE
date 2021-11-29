@@ -5,13 +5,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="../style/main.css">
+    <link rel="stylesheet" type="text/css" href="../style/upload.css">
+
+    <script type="text/javascript" src="../js/upload.js"></script>
+    
+    <link rel="icon" href="" type="image/png" sizes="16x16">
+
     <title>Subir archivo</title>
+
 </head>
 
 <body>
-    <main>
-        <input type="file" webkitdirectory directory multiple />
-        <input type="submit" value="Aceptar">
+    <main class="main">
+        <form action="" method="post" onsubmit="uploadContent()">
+        <input id="uploadContent" type="file" webkitdirectory directory multiple />
+        <input id="btnSubmit" type="submit" value="Aceptar">
+        </form>
     </main>
 </body>
 

@@ -1,0 +1,13 @@
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../resources/font/Montserrat-Light.ttf');
+}
+
+body{
+    font-family: 'Montserrat';
+}
+
+.main{
+    width: 200px;
+    margin: auto;
+}
