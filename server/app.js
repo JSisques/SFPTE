@@ -10,7 +10,7 @@ app.use(express.json())
 app.use(express.static('public'))
 
 //Rutas
-//app.use(require('./services/auth/routes'))
+app.use(require('./microservices/manage_photo/routes'))
 //app.use(require('./microservices/upload_content/routes'))
 
 
