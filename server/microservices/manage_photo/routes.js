@@ -2,11 +2,19 @@ const express = require('express');
 const router = express.Router();
 const multer = require('multer');
 const constants = require('../../util/constants');
+const ExifImage = require('exif').ExifImage;
+const fs = require('fs');
 
 
 const storage = multer.diskStorage({
     destination: function (request, file, cb) {
-        cb(null, constants.uploadImagePath);
+        var dir = constants.uploadImagePath;
+
+        if(!fs.existsSync(dir)){
+            fs.mkdir(dir, err => cb(err, dir));
+        } else{
+            cb(null, dir);
+        }
     },
     filename: function(request, file, cb){
         cb(null, file.originalname);
@@ -27,10 +35,11 @@ router.get('/photo/:ID', function (request, response) {
 });
 
 router.post('/photo', upload.array(constants.uploadImageField), function (request, response) {
-    console.log(request.files);
-    console.log(request.headers)
+    console.log("Entrado en metodo POST");
     console.log(request.body)
-    response.json({ requestBody: request.body })
+    console.log(request.headers)
+    console.log(request.files);
+    response.json({ requestBody: "OK" })
 });
 
 module.exports = router;

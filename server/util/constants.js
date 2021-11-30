@@ -1,6 +1,6 @@
 var constants = {
     appName: "SFPTE",
-    uploadImagePath: "./uploads/",
+    uploadImagePath: "//UDAF/Multimedia/Borrar/", //Ruta del NAS
     uploadImageField: "files"
 
 }

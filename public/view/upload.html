@@ -18,9 +18,25 @@
 </head>
 
 <body>
+
+    <script>
+        function uploadContent() {
+            console.log("Metodo upload");
+    var formElement = document.getElementById("files");
+    var formData = new FormData();
+    formData.append("files", formElement.value);
+    console.log("form element creado");
+    var request = new XMLHttpRequest();
+    console.log("request");
+    request.open("POST", "http://localhost:8080/photo", false);
+    request.send(formData);
+    console.log(request.responseText)
+
+}
+    </script>
     <main class="main">
-        <form action="" method="post" onsubmit="uploadContent()">
-        <input id="uploadContent" type="file" webkitdirectory directory multiple />
+        <form id="uploadForm" action="" method="post" enctype="multipart/form-data" onsubmit="uploadContent()">
+        <input id="files" type="file" />
         <input id="btnSubmit" type="submit" value="Aceptar">
         </form>
     </main>
