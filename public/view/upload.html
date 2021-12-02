@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="../style/upload.css">
 
     <script type="text/javascript" src="../js/upload.js"></script>
-    
+
     <link rel="icon" href="" type="image/png" sizes="16x16">
 
     <title>Subir archivo</title>
@@ -19,27 +19,24 @@
 
 <body>
 
-    <script>
-        function uploadContent() {
-            console.log("Metodo upload");
-    var formElement = document.getElementById("files");
-    var formData = new FormData();
-    formData.append("files", formElement.value);
-    console.log("form element creado");
-    var request = new XMLHttpRequest();
-    console.log("request");
-    request.open("POST", "http://localhost:8080/photo", false);
-    request.send(formData);
-    console.log(request.responseText)
-
-}
-    </script>
     <main class="main">
-        <form id="uploadForm" action="" method="post" enctype="multipart/form-data" onsubmit="uploadContent()">
-        <input id="files" type="file" />
-        <input id="btnSubmit" type="submit" value="Aceptar">
+        <form id="uploadForm" action="" method="post" enctype="multipart/form-data">
+            <input id="files" type="file" name="files" webkitdirectory directory multiple/>
+            <input id="btnSubmit" type="submit" value="Aceptar">
         </form>
     </main>
+
+    <script>
+        const $form = document.getElementById('uploadForm')
+        $form.addEventListener('submit', () => {
+            event.preventDefault()
+            const formData = new FormData(event.currentTarget)
+            fetch('http://localhost:8080/photo', {
+                method: 'POST',
+                body: formData,
+            })
+        })
+    </script>
 </body>
 
 </html>

@@ -1,10 +1,13 @@
 const express = require('express')
 const app = express()
 const server = require('http').Server(app)
+const cors = require('cors')
 
 // Utilizamos lo siguiente para recibir JSON y poder parsearlos en los metodos POST
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
+
+app.use(cors())
 
 // Servimos archivos estáticos en la carpeta public
 app.use(express.static('public'))
