@@ -5,10 +5,12 @@ const constants = require('../../util/constants');
 const ExifImage = require('exif').ExifImage;
 const fs = require('fs');
 
+const Model = require('./model').Model
+
 
 const storage = multer.diskStorage({
     destination: function (request, file, cb) {
-        var dir = constants.uploadImagePath;
+        var dir = constants.uploadImagePathTmp;
 
         if(!fs.existsSync(dir)){
             fs.mkdir(dir, err => cb(err, dir));
